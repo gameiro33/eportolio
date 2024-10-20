@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>João Torres</title>
+		<title>Artifacts - Agent Dialogue</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -14,12 +14,12 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Wrapper -->
+		<!-- Wrapper -->	
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
+						<a href="index.html" class="logo"><span>JOÃO TORRES</span></a>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
@@ -44,71 +44,70 @@
 									<header class="major">
 										<h1>Agent Dialogue</h1>
 									</header>
-									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
 									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
 									<pre><code>
-	; Alice asks Bob about the available stock of 50-inch televisions
+	<b>Alice asks Bob about the available stock of 50-inch televisions</b>
 	(tell
-	:sender Alice
-	:receiver Bob
-	:language KIF
-	:ontology electronics-inventory
-	:content
-		(ask-one
 		:sender Alice
 		:receiver Bob
+		:language KIF
+		:ontology electronics-inventory
 		:content
-			(available-stock (television (size 50)))
-		)
-	)
+			(ask-one
+				:sender Alice
+				:receiver Bob
+				:content
+					(available-stock (television (size 50)))
+				)
+			)
 
-	; Bob responds with the available stock
+	<b>Bob responds with the available stock</b>
 	(reply
-	:sender Bob
-	:receiver Alice
-	:language KIF
-	:ontology electronics-inventory
-	:content
-		(= (available-stock (television (size 50))) 25)
-	)
-
-	; Alice asks Bob about the number of HDMI slots on the 50-inch televisions
-	(tell
-	:sender Alice
-	:receiver Bob
-	:language KIF
-	:ontology electronics-inventory
-	:content
-		(ask-one
-		:sender Alice
-		:receiver Bob
+		:sender Bob
+		:receiver Alice
+		:language KIF
+		:ontology electronics-inventory
 		:content
-			(hdmi-slot-count (television (size 50)))
-		)
+			(= (available-stock (television (size 50))) 25)
 	)
 
-	; Bob responds with the HDMI slot count
-	(reply
-	:sender Bob
-	:receiver Alice
-	:language KIF
-	:ontology electronics-inventory
-	:content
-		(= (hdmi-slot-count (television (size 50))) 4)
-	)
-
-	; Alice confirms receipt of information
+	<b>Alice asks Bob about the number of HDMI slots on the 50-inch televisions</b>
 	(tell
-	:sender Alice
-	:receiver Bob
-	:language KIF
-	:ontology electronics-inventory
-	:content
-		(acknowledge
 		:sender Alice
 		:receiver Bob
-		:content "Information received. Thank you."
-		)
+		:language KIF
+		:ontology electronics-inventory
+		:content
+			(ask-one
+				:sender Alice
+				:receiver Bob
+				:content
+				(hdmi-slot-count (television (size 50)))
+			)
+	)
+
+	<b>Bob responds with the HDMI slot count</b>
+	(reply
+		:sender Bob
+		:receiver Alice
+		:language KIF
+		:ontology electronics-inventory
+		:content
+			(= (hdmi-slot-count (television (size 50))) 4)
+	)
+
+	<b>Alice confirms receipt of information</b>
+	(tell
+		:sender Alice
+		:receiver Bob
+		:language KIF
+		:ontology electronics-inventory
+		:content
+			(acknowledge
+				:sender Alice
+				:receiver Bob
+				:content "Thank you so much for the help."
+			)
 	)
 									</code></pre>
 								</div>
