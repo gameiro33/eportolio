@@ -1,0 +1,153 @@
+<!DOCTYPE HTML>
+<!--
+	Forty by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Artifacts - Agent Dialogue</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->	
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><span>JOÃO TORRES</span></a>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+				<nav id="menu">
+					<ul class="links">
+						<li><a href="index.html">HOME</a></li>
+						<li><a href="aboutme.html">ABOUT ME</a></li>
+						<li><a href="intelligentagents.html">INTELLIGENT AGENTS</a></li>
+						<li><a href="testing.html">TESTING</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Creating Agent Dialogues</h1>
+									</header>
+									<p>A dialogue between 2 agents has been created, using KQML and KIF. KQML is a language for representing messages and dialogues (Finin et al, 1994), while KIF is a knowledge representation language (Genesereth et al, 1992).
+									These languages are often used together in multi-agent systems and knowledge-based applications. KQML provides the communication protocol and message structure, while KIF can be used to represent the actual knowledge content being exchanged.
+									</p>
+									<pre><code>
+										import nltk
+										from nltk.draw.tree import draw_trees
+										
+										# Download required NLTK data
+										nltk.download('punkt', quiet=True)
+										
+										def create_constituency_tree(sentence):
+											tokens = nltk.word_tokenize(sentence)
+											print(f"Tokens: {tokens}")
+											
+											grammar = nltk.CFG.fromstring("""
+												S -> NP VP
+												NP -> Det N | Det N PP | N | PRP | Det ADJ N | NP CC NP
+												VP -> V | V NP | V NP PP | V NP NP
+												PP -> P NP
+												Det -> 'The' | 'the' | 'a' | 'an'
+												N -> 'government' | 'interest' | 'rates' | 'internet' | 'voice' | 'man' | 'dog' | 'telescope' | 'everyone'
+												V -> 'raised' | 'gives' | 'saw'
+												P -> 'with'
+												PRP -> 'everyone'
+												ADJ -> 'interest'
+												CC -> 'and'
+											""")
+											parser = nltk.ChartParser(grammar)
+											return list(parser.parse(tokens))
+										
+										# Sentences to parse
+										sentences = [
+											"The government raised interest rates",
+											"The internet gives everyone a voice",
+											"The man saw the dog with the telescope"
+										]
+										
+										# Create parse trees
+										all_trees = []
+										for sentence in sentences:
+											trees = create_constituency_tree(sentence)
+											unique_trees = list({str(tree): tree for tree in trees}.values())
+											
+											all_trees.extend(unique_trees)
+											
+											# Visualize unique trees for this sentence
+											if unique_trees:
+												draw_trees(*unique_trees)
+									</code></pre>
+								</div>
+								<h2>References</h2>
+								<p>Finin, T., Fritzson, R., Mckay, D. & Mcentire, R. (1994) KQML as an agent communication language. 
+									<i>Proceedings of the third international conference on Information and knowledge management (CIKM '94)</i>: 456–463. DOI:https://doi.org/10.1145/191246.191322</p>
+								<p>Genesereth, M.R. et al. (1992) Knowledge Interchange Format Version 3.0 Reference Manual. <i>Logic 92(1)</i>.</p>
+							</section>
+
+					</div>
+
+				<!-- Contact -->
+				<section id="contact">
+					<div class="inner">
+						<section>
+							<section>
+								<div class="contact-method">
+									<span class="icon solid alt fa-envelope"></span>
+									<h3>Email</h3>
+									<span>joao.torres88@gmail.com</span>
+								</div>
+							</section>
+							<section>
+								<div class="contact-method">
+									<span class="icon solid alt fa-phone"></span>
+									<h3>Phone</h3>
+									<span>+351 936 086 281</span>
+								</div>
+							</section>
+						</section>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<div class="inner">
+						<ul class="icons">
+							<li><a href="x.com/torres88AI" class="icon brands alt fa-x"><span class="label">X</span></a></li>
+							<li><a href="https://github.com/gameiro33/eportolio" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="https://www.linkedin.com/in/jo%C3%A3o-torres-2836b2128/" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						</ul>
+						<ul class="copyright">
+							<li>&copy; 2024 João Torres</li><li>Design Credits: <a href="https://html5up.net">HTML5 UP</a></li>
+						</ul>
+					</div>
+				</footer>
+
+		</div>
+
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+</body>
+</html>
