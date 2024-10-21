@@ -44,7 +44,6 @@
 									<header class="major">
 										<h1>Group Project</h1>
 									</header>
-									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
 									<p>A digital forensics agent.</p>
 									<p>Word count: 1077</p>
 									<h2>1.	Introduction</h2>
@@ -57,8 +56,8 @@
 									<p>When the system gets the scan parameter, it will traverse this dictionary and all its sub-dictionaries to find all files that match the file types in the condition. Then, these files will be copied to the target dictionary which is defined in step 1.</p>
 									<h3>2.3	 Report Generation</h3>
 									<p>The system will query and export the files’ metadata into a report file based on Step 2’s result. The report should be converted into an easy-to-read form (JSON). After generation is completed, the user will be able to see a report file generated based on the given conditions.</p>
-									<img src="images/Digital Forensics v1.png" alt="" />
-									<p>Figure 1: Sequence diagram for the proposed Digital Forensics Agent system.</p>
+									<img src="images/Digital Forensics v1.png" width="400" height=auto align="center" alt="" />
+									<p><span align="center">Figure 1: Sequence diagram for the proposed Digital Forensics Agent system.</span></p>
 									<h3>2.4	Data Requirements</h3>
 									<p>The generated data files should be readable for human users and easily accessible by downstream systems or shared with any other parties. UTF-8 coding should be supported to display directories and files in most languages.</p>
 									<h2>3.	Technology and Tools</h2>
@@ -68,8 +67,8 @@
 									<p>The os library comes standard with Python installation and has been used. It contains methods for interacting with the operating system, such as creating and managing files and directories (W3Schools, N.D.) The nmatch has also been used for matching Unix shell-style wildcards. It compares a single file name against a pattern and returns TRUE when matched and FALSE if not matched (GeeksforGeeks, 2020). The shutil library Includes several high-level operations on files and collections of files (python.org, N.D.) The datetime module supplies classes to work with data and time and includes several functions that deal with dates, times, and time intervals (GeeksforGeeks, 2023). Finally, the json module allows us to work with JSON data (pythoncheatsheet.org, N.D.).</p>
 									<h2>4.	Class/Agent Design</h2>
 									<p>Each class is seen as an agent because none is dependent on the other, each class can be used independently. The reason for generating a json file, instead of inserting the data into a database, is so the file can be sent to anyone, and they can then decide what to do with the file, instead of having to access a database table. A class diagram is shown in Figure 2, and the entire Python code can be found in the Annex.</p>
-									<img src="images/ForensicsUML.jpg" alt="" />
-									<p>Figure 2: UML Diagram for the Digital Forensics system.</p>
+									<img src="images/ForensicsUML.jpg" width="400" height=auto align="center" alt="" />
+									<p><span align="center">Figure 2: UML Diagram for the Digital Forensics system.</span></p>
 									<h3>4.1	 DirectorySearchAgent (directorySearchAgent.py)</h3>
 									<p>This class searches the specified directory or path to search for specified file types on a file system. The getDirectories method generates a list of fully qualified file paths where the files are located.</p>
 									<h3>4.2	 ArchiveFiles (directorySearchAgent.py)</h3> 
@@ -85,8 +84,8 @@
 									<p>It is good practice for reports to be in JSON format for developers and downstream systems. However, for non-technical users, a more intuitive interface may be needed to view report content. A GUI or other user-friendly way of presenting reports could be considered for future releases.</p>
 									<h2>6.	Related Work</h2>
 									<p>A widely used process for computer forensics in the real world is the computer forensics field triage process model (CFFTPM). The aim of this model is to 1) Immediate identification of usable evidence, 2) Identification of high-risk victims, 3) Guidance for the ongoing investigative process, 4) Potential legal charges identification, and 5) Accurately assess the accused’s danger to society (Rogers et al., 2006). A diagram with the CFFTPM steps is shown in Figure 3.</p>
-									<img src="images/CFFTPM.png" alt="" />
-									<p>Figure 3: The CFFTPM Model, adapted from Rogers et al., 2006.</p>
+									<img src="images/CFFTPM.png" width="400" height=auto align="center" alt="" />
+									<p><span align="center">Figure 3: The CFFTPM Model, adapted from Rogers et al., 2006.</span></p>
 									<p>The implementation of performant digital forensics agents, such as the one described in this report is key so that the steps User Usage Profiles and Internet can be performed quickly.</p>
 									<h2>7.	Conclusion</h2>
 									<p>In the present work, a suggested implementation of a digital forensics agent has been described, as well as future possible enhancements. Real-world forensics processes, such as CFFTPM may greatly benefit from agentic architectures for streamlining criminal cases.</p>
