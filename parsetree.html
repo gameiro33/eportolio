@@ -42,56 +42,55 @@
 							<section id="one">
 								<div class="inner">
 									<header class="major">
-										<h1>Creating Agent Dialogues</h1>
+										<h1>Parse Trees</h1>
 									</header>
-									<p>A dialogue between 2 agents has been created, using KQML and KIF. KQML is a language for representing messages and dialogues (Finin et al, 1994), while KIF is a knowledge representation language (Genesereth et al, 1992).
-									These languages are often used together in multi-agent systems and knowledge-based applications. KQML provides the communication protocol and message structure, while KIF can be used to represent the actual knowledge content being exchanged.
+									<p>A Python script that creates parse trees for a given sentence using NLTK's constituency parsing capabilities.
 									</p>
 									<pre><code>
-										import nltk
-										from nltk.draw.tree import draw_trees
-										
-										# Download required NLTK data
-										nltk.download('punkt', quiet=True)
-										
-										def create_constituency_tree(sentence):
-											tokens = nltk.word_tokenize(sentence)
-											print(f"Tokens: {tokens}")
-											
-											grammar = nltk.CFG.fromstring("""
-												S -> NP VP
-												NP -> Det N | Det N PP | N | PRP | Det ADJ N | NP CC NP
-												VP -> V | V NP | V NP PP | V NP NP
-												PP -> P NP
-												Det -> 'The' | 'the' | 'a' | 'an'
-												N -> 'government' | 'interest' | 'rates' | 'internet' | 'voice' | 'man' | 'dog' | 'telescope' | 'everyone'
-												V -> 'raised' | 'gives' | 'saw'
-												P -> 'with'
-												PRP -> 'everyone'
-												ADJ -> 'interest'
-												CC -> 'and'
-											""")
-											parser = nltk.ChartParser(grammar)
-											return list(parser.parse(tokens))
-										
-										# Sentences to parse
-										sentences = [
-											"The government raised interest rates",
-											"The internet gives everyone a voice",
-											"The man saw the dog with the telescope"
-										]
-										
-										# Create parse trees
-										all_trees = []
-										for sentence in sentences:
-											trees = create_constituency_tree(sentence)
-											unique_trees = list({str(tree): tree for tree in trees}.values())
-											
-											all_trees.extend(unique_trees)
-											
-											# Visualize unique trees for this sentence
-											if unique_trees:
-												draw_trees(*unique_trees)
+	import nltk
+	from nltk.draw.tree import draw_trees
+
+	# Download required NLTK data
+	nltk.download('punkt', quiet=True)
+
+	def create_constituency_tree(sentence):
+		tokens = nltk.word_tokenize(sentence)
+		print(f"Tokens: {tokens}")
+		
+		grammar = nltk.CFG.fromstring("""
+			S -> NP VP
+			NP -> Det N | Det N PP | N | PRP | Det ADJ N | NP CC NP
+			VP -> V | V NP | V NP PP | V NP NP
+			PP -> P NP
+			Det -> 'The' | 'the' | 'a' | 'an'
+			N -> 'government' | 'interest' | 'rates' | 'internet' | 'voice' | 'man' | 'dog' | 'telescope' | 'everyone'
+			V -> 'raised' | 'gives' | 'saw'
+			P -> 'with'
+			PRP -> 'everyone'
+			ADJ -> 'interest'
+			CC -> 'and'
+		""")
+		parser = nltk.ChartParser(grammar)
+		return list(parser.parse(tokens))
+
+	# Sentences to parse
+	sentences = [
+		"The government raised interest rates",
+		"The internet gives everyone a voice",
+		"The man saw the dog with the telescope"
+	]
+
+	# Create parse trees
+	all_trees = []
+	for sentence in sentences:
+		trees = create_constituency_tree(sentence)
+		unique_trees = list({str(tree): tree for tree in trees}.values())
+		
+		all_trees.extend(unique_trees)
+		
+		# Visualize unique trees for this sentence
+		if unique_trees:
+			draw_trees(*unique_trees)
 									</code></pre>
 								</div>
 								<h2>References</h2>
