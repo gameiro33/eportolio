@@ -2,6 +2,8 @@ import os
 import fnmatch
 import shutil
 from genMetadata import WriteMetaData
+from concurrent.futures import ThreadPoolExecutor
+from functools import partial
 
 class DirectorySearchAgent:
     # A class to search for files with specific extensions in a given directory. 
@@ -11,16 +13,18 @@ class DirectorySearchAgent:
         # Initialize the DirectorySearchAgent, where directory is the root directory to search in 
         # extensions is a list of file extensions to search for
         self.directory = directory
-        self.extensions = extensions
+        self.extensions = tuple(extensions)  # Convert to tuple for faster comparisons
 
     def getdirectories(self):
         # Search for files with specified extensions in the given directory 
         # Return a list of full file paths matching the specified extensions
         filepath_list = []
-        for path, folder, files in os.walk(self.directory):
-            for file_extension in self.extensions:
-                for filename in fnmatch.filter(files, file_extension):
-                    filepath_list.append(os.path.join(path, filename))
+        for path, _, files in os.walk(self.directory):
+            filepath_list.extend(
+                os.path.join(path, filename)
+                for filename in files
+                if filename.endswith(self.extensions)
+            )
         return filepath_list
 
 class ArchiveFiles:
@@ -35,11 +39,9 @@ class ArchiveFiles:
         # Archive files by either moving or copying them to the archive directory.
         # move is a boolean that indicates if the files should be moved or copied. 
         # Default is 1 (move) because in a forensic context, we want to move the files to the archive directory to keep the original directory clean
-        for file_path in self.source_dir:
-            if move == 1:
-                shutil.move(file_path, self.archive_dir)
-            else:
-                shutil.copy(file_path, self.archive_dir)
+        operation = shutil.move if move else shutil.copy
+        with ThreadPoolExecutor() as executor:
+            executor.map(partial(operation, dst=self.archive_dir), self.source_dir)
 
 if __name__ == "__main__":
     # Set the root directory to search for files
