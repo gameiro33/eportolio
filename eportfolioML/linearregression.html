@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Artefacts - Correlation and Regression</title>
+		<title>Artefacts - Linear Regression</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
@@ -42,21 +42,16 @@
 							<section id="one">
 								<div class="inner">
 									<header class="major">
-										<h1>Correlation and Regression</h1>
+										<h1>Linear Regression</h1>
 									</header>
-								<p>This exercise was carried out based on prefilled jupyter notebooks. The corresponding code and analysis can be found <a href="https://github.com/gameiro33/eportolio/tree/15e5ac43c6ed50e524715bc3f4c239c9a3740760/PythonCode/ML/Unit%203%20-%20Correlation%20and%20Regretion" target="_blank" class="link">here</a>.</p>
-									<br>
-									<p>Lessons Learned:</p>
+                                    <p>This exercise had 2 main tasks:</p>
                                     <ul>
-                                        <li>Correlation and Regression.</li>
-                                        <p>Pearson's correlation coefficient quantifies the strength and direction of linear relationships between variables, with values close to 1 (0.888 in the first example) indicating strong positive correlation and values close to -1 (-0.759 in the second example) indicating strong negative correlation. Linear regression not only reveals the relationship between variables but enables prediction of future values, as demonstrated by calculating that when x=10, the predicted y value is 85.59.</p>
-                                        <li>Linear Regression.</li>
-                                        <p>The scipy.stats.linregress function provides a complete statistical analysis of linear relationships, calculating not just correlation but also slope, intercept, and significance values in a single function call. Creating a predictive model is straightforward by applying the derived formula (y = mx + b), allowing us to make predictions for any input value, as demonstrated when predicting that x=10 would yield y=85.59.</p>
-                                        <li>Multiple Linear Regression</li>
-                                        <p>Multiple linear regression enables prediction using several input variables simultaneously, as demonstrated by predicting CO2 emissions (107.2g) based on both a car's weight (2300kg) and engine volume (1300cm³).The coefficient values (0.00755095 for weight, 0.00780526 for volume) precisely quantify each variable's independent impact on the outcome, allowing us to calculate that a 1000kg weight increase would result in approximately 7.55g more CO2 emissions.</p>
-                                        <li>Polynomial Regression:</li>
-                                        <p>Polynomial regression can model non-linear relationships between variables by fitting higher-degree curves to data points, as demonstrated by using numpy.polyfit with degree 3 to capture the U-shaped pattern in the data. The numpy library provides efficient tools (poly1d and linspace) for both creating polynomial models and generating smoothly plotted curves, enabling effective visualization of complex relationships that simple linear regression cannot accurately represent.</p>
+                                        <li>Task A: Correlation</li>
+                                        <p>Pre-process the data – mean population of each country and mean per capita GDP (from 2001 to 2021) by making some arrangements for the missing values (HINT: You will need to use the datasets Global_GDP.csv and Global_Population.csv). Investigate any correlation between the mean population of each country and the mean per capita GDP (from 2001 to 2021). Very briefly, interpret the generated plot. Evaluate the Pearson Correlation Coefficient.</p>
+                                        <li>Task B: </li>
+                                        <p>Perform linear regression, where the independent variable is the mean population of each country (from 2001 to 2021) and dependent variable is mean per capita GDP (from 2001 to 2021). Be prepared to discuss your agreed results during the seminar session.</p>
                                     </ul>
+                                    <p>The solution has been built in the following jupyter notebook <a href="https://github.com/gameiro33/eportolio/blob/36c20e275a4a8f3f96f721ccd0b01feeb43cf563/PythonCode/ML/Unit%204%20-%20Linear%20Regression/PopulationvGDP.ipynb" target="_blank" class="link">here</a>.</p>
 								</div>
 							</section>
 
